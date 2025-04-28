@@ -24,6 +24,18 @@ body {
     padding: 20px 0;
 }
 
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ff7f00;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.header.scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .header h1 {
     font-size: 2rem;
 }

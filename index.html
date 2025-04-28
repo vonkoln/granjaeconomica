@@ -1,24 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Granja Econômica - Dedicação à Avicultura">
+    <title>Granja Econômica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <h1>Granja Econômica</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#trabalhe">Trabalhe Conosco</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="container">
+        <h2>Dedicação à Avicultura</h2>
+        <p>Refletimos a força e o compromisso com nossos colaboradores, parceiros e clientes.</p>
+        <p>Tradição, inovação e compromisso com a qualidade.</p>
+        <button onclick="scrollToSection('quem-somos')">Saiba Mais</button>
+    </div>
+</section>
+
+<section id="quem-somos" class="section">
+    <div class="container">
+        <h2>Quem Somos</h2>
+        <p>Somos líderes no setor avícola, com foco em excelência, sustentabilidade e desenvolvimento humano, sempre inovando para oferecer a melhor qualidade.</p>
+    </div>
+</section>
+
+<section id="servicos" class="section">
+    <div class="container">
+        <h2>Serviços</h2>
+        <ul>
+            <li>Produção de Ovos</li>
+            <li>Avicultura Sustentável</li>
+            <li>Controle de Qualidade</li>
+            <li>Distribuição</li>
+            <li>Capacitação e Desenvolvimento</li>
+        </ul>
+    </div>
+</section>
+
 <section id="trabalhe" class="section">
     <div class="container">
-      <h2>Trabalhe Conosc</h2>
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-  
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-  
-        <label for="telefone">Telefone:</label> <!-- NOVO -->
-        <input type="text" id="telefone" name="telefone" required>
-  
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-  
-        <button type="submit">
-          <span class="button-text">Enviar</span>
-          <span class="spinner" style="display: none;"></span>
-        </button>
-      </form>
+        <h2>Trabalhe Conos</h2>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+            <button type="submit">
+              <span class="button-text">Enviar</span>
+              <span class="spinner" style="display: none;"></span>
+            </button>
+        </form>
     </div>
-  </section>
-  
+</section>
+
+<section id="contato" class="section">
+    <div class="container">
+        <h2>Contato</h2>
+        <p>Rodovia Avícola, 123 - Granja Econômica</p>
+        <p>Email: <a href="mailto:contato@granjaeconomica.com">contato@granjaeconomica.com</a></p>
+        <p>Telefone: <a href="tel:+551234567890">(12) 3456-7890</a></p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Granja Econômica - Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<button id="backToTop" title="Voltar ao Topo">↑</button>
+
+</body>
+</html>

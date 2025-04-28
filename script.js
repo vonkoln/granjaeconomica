@@ -1,15 +1,25 @@
 let isSubmitting = false;
 
 document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('formulario');
     const nomeInput = form?.querySelector('#nome');
     const emailInput = form?.querySelector('#email');
-    const telefoneInput = form?.querySelector('#telefone'); // NOVO
+    const telefoneInput = form?.querySelector('#telefone');
     const mensagemInput = form?.querySelector('#mensagem');
     const submitButton = form?.querySelector('button[type="submit"]');
 
+    // Sticky Header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
+    // Navegação Suave
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
@@ -17,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Envio de Formulário
     if (form) {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -27,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const nome = nomeInput?.value.trim();
             const email = emailInput?.value.trim();
-            const telefone = telefoneInput?.value.trim(); // NOVO
+            const telefone = telefoneInput?.value.trim();
             const mensagem = mensagemInput?.value.trim();
 
             if (!nome || !email || !telefone || !mensagem) {
@@ -40,16 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            if (!submitButton) return;
-
             isSubmitting = true;
             const buttonText = submitButton.querySelector('.button-text');
             const spinner = submitButton.querySelector('.spinner');
-            if (buttonText && spinner) {
-                buttonText.style.display = 'none';
-                spinner.style.display = 'inline-block';
-                submitButton.disabled = true;
-            }
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+            submitButton.disabled = true;
 
             grecaptcha.ready(function () {
                 grecaptcha.execute('6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS', { action: 'submit' }).then(function (token) {
@@ -59,23 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    //const telefoneInput = document.querySelector('#telefone');
     if (telefoneInput) {
-      maskPhone(telefoneInput);
+        maskPhone(telefoneInput);
     }
 
+    // Botão Voltar ao Topo
     const backToTopButton = document.getElementById('backToTop');
     window.addEventListener('scroll', function () {
-        if (backToTopButton) {
-            backToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
-        }
+        backToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    backToTopButton?.addEventListener('click', function () {
+    backToTopButton.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    if (typeof ScrollReveal !== "undefined" && document.querySelector('.section')) {
-        ScrollReveal().reveal('.section', {
+    // Animações ScrollReveal
+    if (typeof ScrollReveal !== "undefined") {
+        ScrollReveal().reveal('.section, .hero', {
             duration: 1000,
             origin: 'bottom',
             distance: '50px',
@@ -139,7 +145,7 @@ function validateEmail(email) {
 }
 
 function showToast(message, type) {
-    document.querySelectorAll('.toast').forEach(t => t.remove()); // Remove toasts antigos
+    document.querySelectorAll('.toast').forEach(t => t.remove());
 
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
