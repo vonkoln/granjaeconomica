@@ -1,87 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site institucional da Granja Econômica">
-  <title>Granja Econômica</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Granja Econômica - Dedicação à Avicultura">
+    <title>Granja Econômica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
+
+<header class="header">
     <div class="container">
-      <h1>Granja Econômica</h1>
-      <nav>
+        <h1>Granja Econômica</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#trabalhe">Trabalhe Conosco</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="container">
+        <h2>Dedicação à Avicultura</h2>
+        <p>Refletimos a força e o compromisso com nossos colaboradores, parceiros e clientes.</p>
+        <p>Tradição, inovação e compromisso com a qualidade.</p>
+        <button onclick="scrollToSection('quem-somos')">Saiba Mais</button>
+    </div>
+</section>
+
+<section id="quem-somos" class="section">
+    <div class="container">
+        <h2>Quem Somos</h2>
+        <p>Somos líderes no setor avícola, com foco em excelência, sustentabilidade e desenvolvimento humano, sempre inovando para oferecer a melhor qualidade.</p>
+    </div>
+</section>
+
+<section id="servicos" class="section">
+    <div class="container">
+        <h2>Serviços</h2>
         <ul>
-          <li><a href="#home">Início</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#atuacao">Áreas de Atuação</a></li>
-          <li><a href="#trabalhe">Trabalhe Conosco</a></li>
-          <li><a href="#contato">Contato</a></li>
+            <li>Produção de Ovos</li>
+            <li>Avicultura Sustentável</li>
+            <li>Controle de Qualidade</li>
+            <li>Distribuição</li>
+            <li>Capacitação e Desenvolvimento</li>
         </ul>
-      </nav>
     </div>
-  </header>
+</section>
 
-  <section id="home" class="hero">
+<section id="trabalhe" class="section">
     <div class="container">
-      <h2>Bem-vindo à Granja Econômica</h2>
-      <p>Tradição, inovação e compromisso com a qualidade.</p>
-      <p>Desculpe as obras, estamos em transtorno.</p>
-    </div>
-  </section>
+        <h2>Trabalhe Conosco</h2>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-  <section id="sobre">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+
+<section id="contato" class="section">
     <div class="container">
-      <h2>Sobre Nós</h2>
-      <p>A Granja Econômica é referência no setor avícola, com foco em excelência, sustentabilidade e desenvolvimento humano.</p>
+        <h2>Contato</h2>
+        <p>Rodovia Avícola, 123 - Granja Econômica</p>
+        <p>Email: <a href="mailto:contato@granjaeconomica.com">contato@granjaeconomica.com</a></p>
+        <p>Telefone: <a href="tel:+551234567890">(12) 3456-7890</a></p>
     </div>
-  </section>
+</section>
 
-  <section id="atuacao">
+<footer class="footer">
     <div class="container">
-      <h2>Áreas de Atuação</h2>
-      <ul>
-        <li>Produção Avícola</li>
-        <li>Controle de Qualidade</li>
-        <li>Distribuição</li>
-        <li>Capacitação e Desenvolvimento</li>
-      </ul>
+        <p>© 2025 Granja Econômica - Todos os direitos reservados.</p>
     </div>
-  </section>
+</footer>
 
-  <section id="trabalhe">
-    <div class="container">
-      <h2>Trabalhe Conosco</h2>
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="5"></textarea>
-
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="contato">
-    <div class="container">
-      <h2>Fale Conosco</h2>
-      <p>Email: contato@granjaeconomica.com.br</p>
-      <p>Telefone: (00) 0000-0000</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Granja Econômica. Todos os direitos reservados.</p>
-    </div>
-  </footer>
 </body>
 </html>
