@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            const nome = nomeInput.value.trim();
-            const email = emailInput.value.trim();
-            const mensagem = mensagemInput.value.trim();
+            const nome = nomeInput?.value.trim();
+            const email = emailInput?.value.trim();
+            const mensagem = mensagemInput?.value.trim();
 
             if (!nome || !email || !mensagem) {
                 showToast('Preencha todos os campos.', 'error');
@@ -38,12 +38,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            if (!submitButton) return;
+
             isSubmitting = true;
             const buttonText = submitButton.querySelector('.button-text');
             const spinner = submitButton.querySelector('.spinner');
-            buttonText.style.display = 'none';
-            spinner.style.display = 'inline-block';
-            submitButton.disabled = true;
+            if (buttonText && spinner) {
+                buttonText.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                submitButton.disabled = true;
+            }
 
             grecaptcha.ready(function () {
                 grecaptcha.execute('6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS', { action: 'submit' }).then(function (token) {
@@ -60,17 +64,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const backToTopButton = document.getElementById('backToTop');
     window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
+        if (backToTopButton) {
+            backToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
         }
     });
-    backToTopButton.addEventListener('click', function () {
+    backToTopButton?.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    if (typeof ScrollReveal !== "undefined") {
+    if (typeof ScrollReveal !== "undefined" && document.querySelector('.section')) {
         ScrollReveal().reveal('.section', {
             duration: 1000,
             origin: 'bottom',
@@ -83,23 +85,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function sendFormToGoogleSheets(nome, email, mensagem, token) {
     try {
-        await fetch('https://script.https://script.google.com/macros/s/AKfycbxOhvdkSwtGPrXCn1wmerPs19r7s6L2vSaYVkSuVPgyBjIS2qq_TVEwp23J40bagtEI/exec.com/macros/s/1F5IY13xcB3vWZHvbXtALJaWXkVKL2ShVJPKDOIJS4_4gaVTIfs5-Pv-w/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwFN15pFCEwq0-AygfV6x5t_xV9vVWj_7iyvj71gOPy8eUWGgIw0M6FqwRXYrCpbmTI/exec', {
             method: 'POST',
             body: JSON.stringify({ nome, email, mensagem, token }),
             headers: { 'Content-Type': 'application/json' }
         });
+
+        if (!response.ok) {
+            throw new Error('Erro no envio do formulário.');
+        }
+
         showToast('Mensagem enviada com sucesso!', 'success');
-        document.querySelector('#trabalhe form').reset();
+        document.querySelector('#trabalhe form')?.reset();
     } catch (error) {
         showToast('Erro ao enviar, tente novamente.', 'error');
         console.error('Erro:', error);
     } finally {
         const submitButton = document.querySelector('button[type="submit"]');
-        const buttonText = submitButton.querySelector('.button-text');
-        const spinner = submitButton.querySelector('.spinner');
-        buttonText.style.display = 'inline-block';
-        spinner.style.display = 'none';
-        submitButton.disabled = false;
+        const buttonText = submitButton?.querySelector('.button-text');
+        const spinner = submitButton?.querySelector('.spinner');
+
+        if (submitButton && buttonText && spinner) {
+            buttonText.style.display = 'inline-block';
+            spinner.style.display = 'none';
+            submitButton.disabled = false;
+        }
         isSubmitting = false;
     }
 }
@@ -115,11 +125,9 @@ function maskPhone(input) {
     input.addEventListener('input', function () {
         let value = input.value.replace(/\D/g, '');
         if (value.length > 11) value = value.slice(0, 11);
-        if (value.length <= 10) {
-            input.value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-        } else {
-            input.value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-        }
+        input.value = value.length <= 10 ?
+            value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3') :
+            value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
     });
 }
 
@@ -129,10 +137,13 @@ function validateEmail(email) {
 }
 
 function showToast(message, type) {
+    document.querySelectorAll('.toast').forEach(t => t.remove()); // Remove toasts antigos
+
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     toast.innerText = message;
     document.body.appendChild(toast);
+
     setTimeout(() => { toast.classList.add('show'); }, 100);
     setTimeout(() => {
         toast.classList.remove('show');
