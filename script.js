@@ -1,11 +1,12 @@
 let isSubmitting = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('#trabalhe form');
     const nomeInput = form?.querySelector('#nome');
     const emailInput = form?.querySelector('#email');
+    const telefoneInput = form?.querySelector('#telefone'); // NOVO
     const mensagemInput = form?.querySelector('#mensagem');
     const submitButton = form?.querySelector('button[type="submit"]');
+
 
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
@@ -26,9 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const nome = nomeInput?.value.trim();
             const email = emailInput?.value.trim();
+            const telefone = telefoneInput?.value.trim(); // NOVO
             const mensagem = mensagemInput?.value.trim();
 
-            if (!nome || !email || !mensagem) {
+            if (!nome || !email || !telefone || !mensagem) {
                 showToast('Preencha todos os campos.', 'error');
                 return;
             }
@@ -51,15 +53,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
             grecaptcha.ready(function () {
                 grecaptcha.execute('6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS', { action: 'submit' }).then(function (token) {
-                    sendFormToGoogleSheets(nome, email, mensagem, token);
+                    sendFormToGoogleSheets(nome, email, telefone, mensagem, token);
                 });
             });
         });
     }
 
-    const telefoneInput = document.querySelector('#telefone');
+    //const telefoneInput = document.querySelector('#telefone');
     if (telefoneInput) {
-        maskPhone(telefoneInput);
+      maskPhone(telefoneInput);
     }
 
     const backToTopButton = document.getElementById('backToTop');
@@ -83,11 +85,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-async function sendFormToGoogleSheets(nome, email, mensagem, token) {
+async function sendFormToGoogleSheets(nome, email, telefone, mensagem, token) {
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbwFN15pFCEwq0-AygfV6x5t_xV9vVWj_7iyvj71gOPy8eUWGgIw0M6FqwRXYrCpbmTI/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyzaGqzAIMbB5RxPoJyz2W-Z3Hdxk5xYTB6jRZ0IkV-v0s88LlfgwTxlyEJ3m0zQ1RH/exec', {
             method: 'POST',
-            body: JSON.stringify({ nome, email, mensagem, token }),
+            body: JSON.stringify({ nome, email, telefone, mensagem, token }),
             headers: { 'Content-Type': 'application/json' }
         });
 
