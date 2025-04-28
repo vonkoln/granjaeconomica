@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             grecaptcha.ready(function () {
-                grecaptcha.execute('6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS', { action: 'submit' }).then(function (token) {
+                grecaptcha.execute('AKfycbwFN15pFCEwq0-AygfV6x5t_xV9vVWj_7iyvj71gOPy8eUWGgIw0M6FqwRXYrCpbmTI', { action: 'submit' }).then(function (token) {
                     sendFormToGoogleSheets(nome, email, mensagem, token);
                 });
             });
