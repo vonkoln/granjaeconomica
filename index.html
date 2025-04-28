@@ -6,6 +6,8 @@
     <meta name="description" content="Granja Econômica - Dedicação à Avicultura">
     <title>Granja Econômica</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lfo8CYrAAAAANgEgTVF3JauSUqOSia0mfGhB8cS"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -65,9 +67,12 @@
             <input type="email" id="email" name="email" required>
 
             <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
 
-            <button type="submit">Enviar</button>
+            <button type="submit">
+              <span class="button-text">Enviar</span>
+              <span class="spinner" style="display: none;"></span>
+            </button>
         </form>
     </div>
 </section>
@@ -86,6 +91,8 @@
         <p>© 2025 Granja Econômica - Todos os direitos reservados.</p>
     </div>
 </footer>
+
+<button id="backToTop" title="Voltar ao Topo">↑</button>
 
 </body>
 </html>
