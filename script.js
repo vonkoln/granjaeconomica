@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function sendFormToGoogleSheets(nome, email, mensagem, token) {
     try {
-        await fetch('https://script.google.com/macros/s/1F5IY13xcB3vWZHvbXtALJaWXkVKL2ShVJPKDOIJS4_4gaVTIfs5-Pv-w/exec', {
+        await fetch('https://script.https://script.google.com/macros/s/AKfycbxOhvdkSwtGPrXCn1wmerPs19r7s6L2vSaYVkSuVPgyBjIS2qq_TVEwp23J40bagtEI/exec.com/macros/s/1F5IY13xcB3vWZHvbXtALJaWXkVKL2ShVJPKDOIJS4_4gaVTIfs5-Pv-w/exec', {
             method: 'POST',
             body: JSON.stringify({ nome, email, mensagem, token }),
             headers: { 'Content-Type': 'application/json' }
