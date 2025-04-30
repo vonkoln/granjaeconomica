@@ -11,21 +11,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitButton = form?.querySelector('button[type="submit"]');
 
     // Inicializa intl-tel-input no campo telefone
-    phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "auto",
-        geoIpLookup: getIp,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
+    if (phoneInputField && window.intlTelInput) {
+        phoneInput = window.intlTelInput(phoneInputField, {
+          initialCountry: "auto",
+          geoIpLookup: getIp,
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+      }
+      
 
     // Sticky Header
     const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
+
+    if (header) {
+      window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+          header.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
+          header.classList.remove('scrolled');
         }
-    });
+      });
+    }
+    
 
     // Navegação Suave
     document.querySelectorAll('.nav-links a').forEach(link => {
