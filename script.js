@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializa intl-tel-input no campo telefone
     if (phoneInputField && window.intlTelInput) {
         phoneInput = window.intlTelInput(phoneInputField, {
-          initialCountry: "auto",
+        initialCountry: "br", // 🇧🇷 Brasil
+        nationalMode: false,  // importante para mostrar o +55
+        formatOnDisplay: true,
           geoIpLookup: getIp,
           utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
