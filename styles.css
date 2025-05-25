@@ -28,6 +28,12 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+.logo {
+  height: 60px;
+  max-width: 100%;
+}
+
+
 .header.scrolled {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
