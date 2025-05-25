@@ -28,11 +28,12 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.logo {
-  height: 90px;
-  max-width: 100%;
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-
 
 .header.scrolled {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -49,6 +50,7 @@ body {
     justify-content: center;
     gap: 35px;
     margin-top: 10px;
+    top: 20px;
 }
 
 .nav-links a {
@@ -60,6 +62,13 @@ body {
 .nav-links a:hover {
     text-decoration: underline;
 }
+
+/* Logo GE*/
+.logo {
+    height: 60px;
+    max-width: 100%;
+}
+
 
 /* Hero */
 .hero {
@@ -203,3 +212,22 @@ button[type="submit"]:hover {
 #backToTop:hover {
     background-color: #e07000;
 }
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .logo {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+}
+
