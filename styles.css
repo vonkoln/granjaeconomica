@@ -23,13 +23,13 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #ff7f00;
-    padding: 20px 0;
+    background-color: #fff;
+    padding: 10px 0;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .logo {
-  height: 60px;
+  height: 90px;
   max-width: 100%;
 }
 
@@ -47,12 +47,12 @@ body {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 35px;
     margin-top: 10px;
 }
 
 .nav-links a {
-    color: white;
+    color: #ff7f00;
     text-decoration: none;
     font-weight: bold;
 }
@@ -63,7 +63,7 @@ body {
 
 /* Hero */
 .hero {
-    background: url('background-hero.png') no-repeat center center/cover;
+    background: url('img/background-hero.png') no-repeat center center/cover;
     color: white;
     text-align: center;
     padding: 100px 20px;
